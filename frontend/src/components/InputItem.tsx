@@ -9,7 +9,7 @@ const InputItem = ({newItemText, setnewItemText, addItemToList}) => {
                 onKeyDown={e => e.key === 'Enter' && addItemToList()} // if "enter"
                 type="text" placeholder="Enter your todo"
             />
-            <Button onClick={addItemToList}></Button>
+            <Button onClick={addItemToList}>Add</Button>
         </>
     );
 }
