@@ -1,10 +1,14 @@
-import React from "react";
 import Button from "react-bootstrap/Button";
 
-const InputItem = ({newItem, setNewItem, addItemToList}) => {
+const InputItem = ({newItemText, setnewItemText, addItemToList}) => {
     return (
         <>
-            <input value={newItem} onChange={e => setNewItem(e.target.value)} type="text" placeholder="Enter your todo"/>
+            <input 
+                value={newItemText} 
+                onChange={e => setnewItemText(e.target.value)} 
+                onKeyDown={e => e.key === 'Enter' && addItemToList()} // if "enter"
+                type="text" placeholder="Enter your todo"
+            />
             <Button onClick={addItemToList}></Button>
         </>
     );

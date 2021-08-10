@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+
 import './App.css';
 import InputItem from './components/InputItem';
 import DisplayItems from './components/DisplayItems';
+import FilterItems from './components/FilterItems';
 
 function App() {
-  const [newItem, setNewItem] = useState("");
+  const [newItemText, setnewItemText] = useState("");
   const [items, setItems] = useState<any[]>([]);
   
   // does current filter allow this item.status
   const [filter, setFilter] = useState({todo: true, done: true, deleted: false});
   
   const addItemToList = (item:any) => {
-    setItems([...items, {text: newItem, idx: items.length, status: "todo"}]);
+    setItems([...items, {text: newItemText, idx: items.length, status: "todo"}]);
+    setnewItemText("");
   };
 
   const editItem = (idx:number, item:any) => {
@@ -29,8 +31,9 @@ function App() {
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossOrigin="anonymous"
       />
-      <InputItem newItem={newItem} setNewItem={setNewItem} addItemToList={addItemToList}/> {/*Check if 'context' is better suited*/ }
+      <InputItem newItemText={newItemText} setnewItemText={setnewItemText} addItemToList={addItemToList}/> {/*Check if 'context' is better suited*/ }
       <DisplayItems filter={filter} items={items} editItem={editItem}/>
+      <FilterItems setFilter={setFilter}/>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import ListGroupItem from "react-bootstrap/ListGroupItem";
+import {ListGroupItem, Button, Row, Col} from "react-bootstrap";
 
 const DisplayItem = ({item, editItem}) => {
 
@@ -10,14 +10,23 @@ const DisplayItem = ({item, editItem}) => {
         editItem(item.idx, {...item, status: newStatus});
     };
 
+    const deleteItem = () => {
+        editItem(item.idx, {...item, status: 'deleted'});
+    };
+
     let itemText = item.text;
     if (item.status === 'done') {
-        itemText = <del>{item.text}</del>;
+        itemText = <s>{item.text}</s>;
     }
-    console.log(item, 'itemText:', itemText);
+    // console.log(item, 'itemText:', itemText);
     return (
-        <ListGroupItem onClick={toggleStatus}>
-            {itemText}
+        <ListGroupItem>
+            <Row>
+                <Col md="8" onClick={toggleStatus}> 
+                    {itemText} 
+                </Col>
+                <Col md="4"> <Button onClick={deleteItem}> Delete </Button> </Col>
+            </Row>
         </ListGroupItem>
     );
 }
