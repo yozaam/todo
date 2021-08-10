@@ -7,13 +7,15 @@ import DisplayItems from './components/DisplayItems';
 function App() {
   const [newItem, setNewItem] = useState("");
   const [items, setItems] = useState<any[]>([]);
-  const [filter, setFilter] = useState({todo: false, done: false, deleted: true});
+  
+  // does current filter allow this item.status
+  const [filter, setFilter] = useState({todo: true, done: true, deleted: false});
   
   const addItemToList = (item:any) => {
     setItems([...items, {text: newItem, idx: items.length, status: "todo"}]);
   };
 
-  const editItem = (idx, item:any) => {
+  const editItem = (idx:number, item:any) => {
     let items_edited = [...items];
     items_edited[idx] = item;
     setItems(items_edited);
