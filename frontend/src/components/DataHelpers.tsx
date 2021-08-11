@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 
 const DataHelpers = ({items, setItems}) => {
 
-    const BACKEND_URL = 'http://localhost:8000';
+    const BACKEND_URL = 'http://todo-backend-yvakil-todo-backend.apps.na46.prod.nextcle.com/'; // http://localhost:8000';
 
     const postToEndpoint = () => {
         const request = {
