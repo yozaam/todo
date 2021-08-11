@@ -1,10 +1,16 @@
 import React from "react";
 import {ListGroupItem, Button, Row, Col} from "react-bootstrap";
+import ItemType from "../types/ItemType";
 
-const DisplayItem = ({item, editItem}) => {
+interface DisplayItemProps {
+    item: ItemType;
+    editItem: any;
+};
+
+const DisplayItem = ({item, editItem}:DisplayItemProps) => {
 
     const toggleStatus = () => {
-        let newStatus = '';
+        let newStatus:string = '';
         if (item.status === 'done') newStatus = 'todo';
         else if (item.status === 'todo') newStatus = 'done';
         editItem(item.idx, {...item, status: newStatus});
@@ -14,7 +20,7 @@ const DisplayItem = ({item, editItem}) => {
         editItem(item.idx, {...item, status: 'deleted'});
     };
 
-    let itemText = item.text;
+    let itemText:any = item.text;
     if (item.status === 'done') {
         itemText = <s>{item.text}</s>;
     }

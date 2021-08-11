@@ -1,6 +1,13 @@
 import Button from 'react-bootstrap/Button';
 
-const DataHelpers = ({items, setItems}) => {
+import ItemType from '../types/ItemType';
+
+interface DataHelpersProps {
+    items: ItemType[];
+    setItems: any;
+};
+
+const DataHelpers = ({items, setItems}:DataHelpersProps) => {
 
     const BACKEND_URL = 'http://todo-backend-yvakil-todo-backend.apps.na46.prod.nextcle.com/'; // http://localhost:8000';
 
