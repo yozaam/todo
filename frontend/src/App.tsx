@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button'
 import './App.css';
 import InputItem from './components/InputItem';
 import DisplayItems from './components/DisplayItems';
 import FilterItems from './components/FilterItems';
+import DataHelpers from './components/DataHelpers';
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
       <DisplayItems filter={filter} items={items} editItem={editItem} setItemsCount={setItemsCount}/>
       <FilterItems setFilter={setFilter}/>
       <h1>Count = {itemsCount}</h1>
-      <Button onClick={()=>setItems([])}>Clear All</Button> 
+      <DataHelpers items={items} setItems={setItems}/>
     </>
   );
 }
