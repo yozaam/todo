@@ -2,7 +2,7 @@ import React from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import DisplayItem from "./DisplayItem";
 
-const DisplayItems = ({filter, items, editItem}) => {
+const DisplayItems = ({filter, items, editItem, setItemsCount}) => {
     const listItems = items
     .filter((item) => filter[item.status])
     .map((item) => {

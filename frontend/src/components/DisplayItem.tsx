@@ -25,7 +25,9 @@ const DisplayItem = ({item, editItem}) => {
                 <Col md="8" onClick={toggleStatus}> 
                     {itemText} 
                 </Col>
-                <Col md="4"> <Button onClick={deleteItem}> Delete </Button> </Col>
+                <Col md="4"> 
+                    <Button onClick={deleteItem}> Delete </Button> 
+                </Col>
             </Row>
         </ListGroupItem>
     );
