@@ -16,16 +16,12 @@ function App() {
   const addItemToList = (item:any) => {
     setItems([...items, {text: newItemText, idx: items.length, status: "todo"}]);
     setnewItemText("");
-    setItemsCount(itemsCount + 1);
   };
 
   const editItem = (idx:number, item:any) => {
     let items_edited = [...items];
     items_edited[idx] = item;
     setItems(items_edited);
-    if (item.status === 'deleted') {
-      setItemsCount(itemsCount - 1);
-    }
   };
 
   return (
