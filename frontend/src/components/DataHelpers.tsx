@@ -9,7 +9,9 @@ interface DataHelpersProps {
 
 const DataHelpers = ({items, setItems}:DataHelpersProps) => {
 
-    const BACKEND_URL = 'http://todo-backend-yvakil-backend.apps.na46.prod.nextcle.com/'; // http://localhost:8000';
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+    console.log(process.env, BACKEND_URL);
+    //'http://todo-backend-yvakil-backend.apps.na46.prod.nextcle.com/'; // http://localhost:8000';
 
     const postToEndpoint = () => {
         const request = {
