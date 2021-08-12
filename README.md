@@ -1,7 +1,6 @@
 # how to run locally?
 
 (on bash shell execute  `start.sh`)
-(If you get 'Permission denied then make this an executable: `chmod +x script-name-here.sh`)
 
 # this script will run the two folders /frontend and /backend
 Terminal 1

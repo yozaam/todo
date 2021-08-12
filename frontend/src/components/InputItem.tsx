@@ -1,18 +1,12 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import ItemType from '../types/ItemType';
 
-interface InputItemProps {
-    items: ItemType[];
-    setItems: any;
-};
-
-const InputItem = ({items, setItems}:InputItemProps) => {
+const InputItem = ({ addItemToList }) => {
 
     const [newItemText, setNewItemText] = useState<string>("");
 
-    const addItemToList = () => {
-        setItems([...items, {text: newItemText, idx: items.length, status: "todo"}]);
+    const addItemToListAndClearInput = () => {
+        addItemToList(newItemText);
         setNewItemText("");
     };
 
@@ -21,10 +15,10 @@ const InputItem = ({items, setItems}:InputItemProps) => {
             <input 
                 value={newItemText} 
                 onChange={e => setNewItemText(e.target.value)} 
-                onKeyDown={e => e.key === 'Enter' && addItemToList()} // if "enter"
+                onKeyDown={e => e.key === 'Enter' && addItemToListAndClearInput()} // if "enter"
                 type="text" placeholder="Enter your todo"
             />
-            <Button onClick={addItemToList}>Add</Button>
+            <Button onClick={addItemToListAndClearInput}>Add</Button>
         </>
     );
 }

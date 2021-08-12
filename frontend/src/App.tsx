@@ -10,6 +10,12 @@ import FilterType from './types/FilterType';
 
 import services from './services.js';
 
+// TODO: is this the right place to declare this constant?
+let BACKEND_URL:string = process.env.REACT_APP_BACKEND_URL || 'localhost:8000';
+// console.log(process.env, BACKEND_URL);
+BACKEND_URL = 'http://' + BACKEND_URL;
+//'http://todo-backend-yvakil-backend.apps.na46.prod.nextcle.com/'; // http://localhost:8000';
+
 function App() {
   const [items, setItems] = useState<ItemType[]>([]);
   
@@ -22,13 +28,22 @@ function App() {
     setItems(items_edited);
   };
 
+  const addItemToList = (newItemText:string) => {
+    setItems([...items, {text: newItemText, idx: items.length, status: "todo"}]);
+    return true;
+  };
+
   return (
     <>
       <h4>press "Enter" to add to list, click item text to toggle</h4>
-      <InputItem items={items} setItems={setItems}/> {/*Check if 'context' is better suited*/ }
+      <InputItem addItemToList={addItemToList}/> {/*Check if 'context' is better suited*/ }
       <DisplayItems filter={filter} items={items} editItem={editItem}/>
       <FilterItems setFilter={setFilter}/> 
-      <DataHelpers items={items} setItems={setItems} services={services}/>
+      <DataHelpers
+          onClear={() => setItems([])}
+          onPost={() => services.postToEndpoint(BACKEND_URL, items)}
+          onGet={() => services.getFromEndpoint(BACKEND_URL, setItems)}
+      />    
     </>
   );
 }
