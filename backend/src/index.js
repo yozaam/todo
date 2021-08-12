@@ -30,3 +30,14 @@ let server = http.createServer(function (req, res) {
     }
 
 }).listen(8000);
+
+/* 
+Note:
+oc get route todo-backend -o yaml | grep "host:" | awk 'END{print $2}'
+
+this command will find the 'route' URL that needs to be supplied to frontend
+
+now to create a map with the route, 
+oc create configmap backend-url-config --from-literal=backend.url=`oc get route todo-backend -o yaml | grep "host:" | awk 'END{print $2}'`
+
+*/
