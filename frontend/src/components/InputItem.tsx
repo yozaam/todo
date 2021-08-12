@@ -1,12 +1,21 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
+import ItemType from '../types/ItemType';
 
 interface InputItemProps {
-    newItemText: string;
-    setNewItemText: any;
-    addItemToList: any;
+    items: ItemType[];
+    setItems: any;
 };
 
-const InputItem = ({newItemText, setNewItemText, addItemToList}:InputItemProps) => {
+const InputItem = ({items, setItems}:InputItemProps) => {
+
+    const [newItemText, setNewItemText] = useState<string>("");
+
+    const addItemToList = () => {
+        setItems([...items, {text: newItemText, idx: items.length, status: "todo"}]);
+        setNewItemText("");
+    };
+
     return (
         <>
             <input 

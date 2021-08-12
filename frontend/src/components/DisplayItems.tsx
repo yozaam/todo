@@ -8,10 +8,9 @@ interface DisplayItemsProps {
     filter: FilterType;
     items: ItemType[];
     editItem: any;
-    setItemsCount: any;
 };
 
-const DisplayItems = ({filter, items, editItem, setItemsCount}:DisplayItemsProps) => {
+const DisplayItems = ({filter, items, editItem}:DisplayItemsProps) => {
     const listItems = items
     .filter((item) => filter[item.status])
     .map((item) => {
@@ -19,11 +18,13 @@ const DisplayItems = ({filter, items, editItem, setItemsCount}:DisplayItemsProps
         return <DisplayItem key={item.idx} item={item} editItem={editItem} />
     });
     // console.log(listItems);
-    setItemsCount(listItems.length);
     return (
-        <ListGroup>
-            {listItems}
-        </ListGroup>
+        <>
+            <ListGroup>
+                {listItems}
+            </ListGroup>
+            <h4>Count = {listItems.length}</h4>
+        </>
     )
 }
 
