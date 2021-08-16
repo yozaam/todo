@@ -8,11 +8,11 @@ COPY . .
 # # Give owner rights to the current user, 3 lines to avoid mkdir permission denied 
 # RUN chown -Rh node.node .
 
-RUN npm install yarn
-RUN yarn install
-
 # give all permisions!
 RUN chmod 777 .
+
+RUN npm install yarn
+RUN yarn install
 
 
 EXPOSE 3000
