@@ -3,6 +3,8 @@ LABEL description="This is a frontend node js container image"
 MAINTAINER Yohaan Vakil <yvakil@redhat.com>
 COPY package*.json ./
 
+RUN npm config set unsafe-perm true # setting for error in mkdir permission
+
 RUN npm install
 
 # bundle all my code in the image :)
