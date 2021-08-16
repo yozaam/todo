@@ -2,14 +2,13 @@ FROM openshift/nodejs
 LABEL description="This is a frontend node js container image"
 MAINTAINER Yohaan Vakil <yvakil@redhat.com>
 COPY package*.json ./
+# bundle all my code in the image :)
+COPY . .
 
 # # Give owner rights to the current user, 3 lines to avoid mkdir permission denied 
-# RUN chown -Rh $user:$user /project
-# USER $user
-# RUN npm config set unsafe-perm true 
-# bundle all my code in the image :)
-COPY --chown=$user:$user . .
+RUN chown -Rh $user:$user .
 USER $user
+RUN npm config set unsafe-perm true 
 
 RUN npm install
 
