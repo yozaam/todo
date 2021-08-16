@@ -8,7 +8,7 @@ COPY package*.json ./
 # USER $user
 # RUN npm config set unsafe-perm true 
 # bundle all my code in the image :)
-COPY --chown $user:$user . .
+COPY --chown=$user:$user . .
 USER $user
 
 RUN npm install
