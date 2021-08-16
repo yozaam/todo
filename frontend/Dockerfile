@@ -9,7 +9,7 @@ COPY . .
 # RUN chown -Rh node.node .
 
 # give all permisions!
-RUN chmod 777 .
+RUN chmod 777 node_modules
 
 RUN npm install 
 
