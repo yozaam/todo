@@ -11,11 +11,9 @@ COPY . .
 # give all permisions!
 RUN chmod 777 .
 
-RUN npm install yarn
-RUN yarn install
-
+RUN npm install 
 
 EXPOSE 3000
 # ENTRYPOINT npm install && npm run start
 
-CMD ["yarn", "start"]
+CMD ["npm", "start"]
