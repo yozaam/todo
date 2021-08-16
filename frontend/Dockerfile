@@ -3,7 +3,10 @@ LABEL description="This is a frontend node js container image"
 MAINTAINER Yohaan Vakil <yvakil@redhat.com>
 COPY package*.json ./
 
-RUN npm config set unsafe-perm true # setting for error in mkdir permission
+# Give owner rights to the current user, 3 lines to avoid mkdir permission denied 
+RUN chown -Rh $user:$user /project
+USER $user
+RUN npm config set unsafe-perm true 
 
 RUN npm install
 
