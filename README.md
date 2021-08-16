@@ -14,7 +14,7 @@ cd frontend
 yarn start
 ```
 
-*(If browser doesn't open automatically go to http://localhost:3000)*
+*(If browser doesn't open automatically go to http://localhost:8080)*
 
 # todo
 A TODO app using React  
