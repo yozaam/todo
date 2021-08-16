@@ -11,7 +11,7 @@ COPY . .
 RUN npm install 
 
 # give all permisions!
-RUN chmod 777 .
+RUN chmod node.node .
 
 
 EXPOSE 3000
