@@ -6,14 +6,16 @@ COPY package*.json ./
 COPY . .
 
 # # Give owner rights to the current user, 3 lines to avoid mkdir permission denied 
-RUN chown -Rh $user:$user .
-USER $user
-RUN npm config set unsafe-perm true 
+# RUN chown -Rh node.node .
 
-RUN npm install
+RUN npm install yarn
+RUN yarn install
+
+# give all permisions!
+RUN chmod 777 .
 
 
 EXPOSE 3000
 # ENTRYPOINT npm install && npm run start
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
