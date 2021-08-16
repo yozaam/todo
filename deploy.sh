@@ -3,7 +3,7 @@
 # oc new-project yvakil-auto
 
 # backend image from quay
-oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.001Gi
+oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.01Gi
 
 # persistent volume creation and claim
 oc create -f backend/pv.yaml 

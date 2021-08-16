@@ -7,8 +7,8 @@ metadata:
 spec:
   storageClassName: slow
   capacity:
-    storage: 0.001Gi
+    storage: 0.01Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
     path: "/public"

@@ -5,7 +5,7 @@ metadata:
 spec:
   storageClassName: slow
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 0.001Gi
+      storage: 0.01Gi

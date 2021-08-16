@@ -1,9 +1,11 @@
 let http = require('http');
 let fs = require('fs');
+const fsExtra = require('fs-extra');
 
 let server = http.createServer(function (req, res) {
 
     const DB_PATH = __dirname + '/../public/items';
+    fsExtra.ensureFileSync(DB_PATH);
 
     console.log(req.method);
     if (req.method === 'GET') {
