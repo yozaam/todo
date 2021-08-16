@@ -9,7 +9,7 @@ oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.001Gi
 oc create -f backend/pv.yaml 
 oc create -f backend/pvc.yaml
 
-oc set volume deployment/backend-todo --add --name=yvakil-pvc --type=persistentVolumeClaim --claim-name=yvakil-pv-claim --mount-path=/public 
+oc set volume deployment/backend-todo --add --name=yvakil-pvc --type=persistentVolumeClaim --claim-name=yvakil-pvc --mount-path=/public 
 
 
 oc expose svc/backend-todo
