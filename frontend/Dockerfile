@@ -8,10 +8,11 @@ COPY . .
 # # Give owner rights to the current user, 3 lines to avoid mkdir permission denied 
 # RUN chown -Rh node.node .
 
-# give all permisions!
-RUN chmod 777 node_modules
-
 RUN npm install 
+
+# give all permisions!
+RUN chmod 777 .
+
 
 EXPOSE 3000
 # ENTRYPOINT npm install && npm run start
