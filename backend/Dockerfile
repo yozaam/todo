@@ -10,6 +10,7 @@ RUN npm install
 COPY . .
 
 # RUN touch public/items
+RUN mkdir public
 
 EXPOSE 8000
 # ENTRYPOINT npm install && npm run start
