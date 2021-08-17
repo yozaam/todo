@@ -5,10 +5,10 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: slow
+  storageClassName: standard
   capacity:
     storage: 0.01Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/public"
+    path: "/"

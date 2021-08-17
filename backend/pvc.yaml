@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: yvakil-pvc
 spec:
-  storageClassName: slow
+  storageClassName: standard
   accessModes:
     - ReadWriteMany
   resources:
