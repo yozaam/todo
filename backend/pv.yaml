@@ -9,6 +9,6 @@ spec:
   capacity:
     storage: 0.01Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
     path: "/"

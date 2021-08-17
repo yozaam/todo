@@ -2,16 +2,17 @@
 
 # oc new-project yvakil-auto
 
-# backend image from quay
-oc new-app https://github.com/yozaam/todo/#review --context-dir=/backend --strategy=docker --name=backend-todo
-# put this for quay # --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.01Gi
+# backend image from github dockerfile
+# oc new-app https://github.com/yozaam/todo/#review --context-dir=/backend --strategy=docker --name=backend-todo
+# put this for quay 
+oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.001Gi
 
 
 # persistent volume creation and claim
 oc create -f backend/pv.yaml 
 oc create -f backend/pvc.yaml
 
-oc set volume deployment/backend-todo --add --name=yvakil-pvc --type=persistentVolumeClaim --claim-name=yvakil-pvc --mount-path=/public 
+oc set volume deployment/backend-todo --add --name=yvakil-pvc --type=persistentVolumeClaim --claim-name=yvakil-pvc --mount-path=/items 
 
 
 oc expose svc/backend-todo
