@@ -5,15 +5,13 @@
 # backend image from github dockerfile
 # oc new-app https://github.com/yozaam/todo/#review --context-dir=/backend --strategy=docker --name=backend-todo
 # put this for quay 
-oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.001Gi
+oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.01Gi
 
+# persistent volume creation and claim ( do from GUI -> topology -> right click -> add storage)
+# oc create -f backend/pv.yaml 
+# oc create -f backend/pvc.yaml
 
-# persistent volume creation and claim
-oc create -f backend/pv.yaml 
-oc create -f backend/pvc.yaml
-
-oc set volume deployment/backend-todo --add --name=yvakil-pvc --type=persistentVolumeClaim --claim-name=yvakil-pvc --mount-path=/items 
-
+# oc set volume deployment/backend-todo --add --name=yvakil-pvc --type=persistentVolumeClaim --claim-name=yvakil-pvc --mount-path=/items 
 
 oc expose svc/backend-todo
 
@@ -28,4 +26,3 @@ oc new-app openshift/nodejs~https://github.com/yozaam/todo/#review --context-dir
 oc expose service/todo
 # solved all the port problems by using port 8080 in reactjs codebase itself..
 # oc port-forward `oc get pods | awk 'END{print $1}'` 3000:8080 &
-

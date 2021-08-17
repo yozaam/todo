@@ -3,8 +3,8 @@ let fs = require('fs');
 // const fsExtra = require('fs-extra');
 
 const DB_PATH = __dirname + '/../items/db';
-// let touch = fs.openSync(DB_PATH, 'a'); // just like doing a `touch ./public/items` in bash
-// fs.closeSync(touch);
+let touch = fs.openSync(DB_PATH, 'a'); // just like doing a `touch ./public/items` in bash
+fs.closeSync(touch);
 
 let server = http.createServer(function (req, res) {
 

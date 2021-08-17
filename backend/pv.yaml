@@ -10,5 +10,6 @@ spec:
     storage: 0.01Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/"
+  nfs:
+    path: /tmp
+    server: 172.17.0.2
