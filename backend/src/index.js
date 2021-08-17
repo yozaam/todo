@@ -2,12 +2,12 @@ let http = require('http');
 let fs = require('fs');
 // const fsExtra = require('fs-extra');
 
+const DB_PATH = __dirname + '/../public/items';
 let touch = fs.openSync(DB_PATH, 'a'); // just like doing a `touch ./public/items` in bash
 fs.closeSync(touch);
 
 let server = http.createServer(function (req, res) {
 
-    const DB_PATH = __dirname + '/../public/items';
     // fsExtra.ensureFileSync(DB_PATH);
 
     console.log(req.method);
