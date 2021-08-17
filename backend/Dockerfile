@@ -9,8 +9,8 @@ RUN npm install
 # bundle all my code in the image :)
 COPY . .
 
-# RUN touch public/items
 RUN mkdir public
+RUN touch public/items
 
 EXPOSE 8000
 # ENTRYPOINT npm install && npm run start
