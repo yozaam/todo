@@ -3,7 +3,8 @@
 # oc new-project yvakil-auto
 
 # backend image from quay
-oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.01Gi
+oc new-app openshift/nodejs~https://github.com/yozaam/todo/#review --context-dir=/backend 
+# put this for quay # --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.01Gi
 
 # persistent volume creation and claim
 oc create -f backend/pv.yaml 

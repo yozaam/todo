@@ -3,8 +3,8 @@ let fs = require('fs');
 // const fsExtra = require('fs-extra');
 
 const DB_PATH = __dirname + '/../public/items';
-let touch = fs.openSync(DB_PATH, 'a'); // just like doing a `touch ./public/items` in bash
-fs.closeSync(touch);
+// let touch = fs.openSync(DB_PATH, 'a'); // just like doing a `touch ./public/items` in bash
+// fs.closeSync(touch);
 
 let server = http.createServer(function (req, res) {
 
@@ -13,9 +13,14 @@ let server = http.createServer(function (req, res) {
     console.log(req.method);
     if (req.method === 'GET') {
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
-        let body = fs.readFileSync(DB_PATH, {encoding:'utf8', flag:'r'}); 
-        console.log(body);
-        res.end(body);
+        try {
+            let body = fs.readFileSync(DB_PATH, {encoding:'utf8', flag:'r'}); 
+            console.log(body);
+            res.end(body);
+        } catch(e) {
+            console.log('No data found');
+            res.end('');
+        }
     } else if (req.method === 'POST') {
         let body = '';
         req.on('data', function (chunk) {
