@@ -1,5 +1,5 @@
 import React from "react";
-import {ListGroupItem, Button, Row, Col} from "react-bootstrap";
+import { InputGroup, ListGroupItem, Button, Row, Col} from "react-bootstrap";
 import ItemType from "../types/ItemType";
 
 interface DisplayItemProps {
@@ -28,10 +28,13 @@ const DisplayItem = ({item, editItem}:DisplayItemProps) => {
     return (
         <ListGroupItem>
             <Row>
-                <Col md="8" onClick={toggleStatus}> 
+                <span style={{width:"fit-content"}} onClick={toggleStatus}>
+                    <InputGroup.Checkbox type="checkbox" checked={item.status === 'done'} />
+                </span>
+                <Col onClick={toggleStatus}> 
                     {itemText} 
                 </Col>
-                <Col md="4"> 
+                <Col > 
                     <Button onClick={deleteItem}> Delete </Button> 
                 </Col>
             </Row>

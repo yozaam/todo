@@ -35,7 +35,8 @@ function App() {
 
   return (
     <>
-      <h4>press "Enter" to add to list, click item text to toggle</h4>
+      <h1>Todo App</h1>
+      <h6>Shortcuts: "Enter" to add, click item text to toggle</h6><br/>
       <InputItem addItemToList={addItemToList}/> {/*Check if 'context' is better suited*/ }
       <DisplayItems filter={filter} items={items} editItem={editItem}/>
       <FilterItems setFilter={setFilter}/> 
