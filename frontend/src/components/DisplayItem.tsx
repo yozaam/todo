@@ -22,7 +22,7 @@ const DisplayItem = ({item, editItem}:DisplayItemProps) => {
 
     let itemText:any = item.text;
     if (item.status === 'done') {
-        itemText = <s>{item.text}</s>;
+        itemText = <s data-testid="strikethrough">{item.text}</s>;
     }
     // console.log(item, 'itemText:', itemText);
     return (

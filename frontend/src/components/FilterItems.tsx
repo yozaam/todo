@@ -3,7 +3,7 @@ import { ToggleButtonGroup, ToggleButton } from "react-bootstrap"
 const FilterItems  = ({ setFilter }) => {    
     
     const setFilterStatus = (filterStatus:string) => {
-        console.log(filterStatus);
+        // console.log(filterStatus);
         switch (filterStatus) {
             case 'all':
                 setFilter({todo: true, done: true, deleted: false});
