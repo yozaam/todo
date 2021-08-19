@@ -14,10 +14,8 @@ const DisplayItems: React.FC<DisplayItemsProps> = ({filter, items, editItem}) =>
     const listItems = items
     .filter((item) => filter[item.status])
     .map((item) => {
-        // console.log(item, 'sent to DisplayItem');
         return <DisplayItem key={item.idx} item={item} editItem={editItem} />
     });
-    // console.log(listItems);
     return (
         <>
             <ListGroup>

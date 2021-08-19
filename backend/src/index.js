@@ -20,7 +20,6 @@ let server = http.createServer(function (req, res) {
         });
 
         req.on('end', function(){
-            // console.log(body, req.body);
             fs.writeFileSync(DB_PATH, body); // async might give 200 and fs fails later ?
             res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
             res.end(body);

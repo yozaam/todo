@@ -24,7 +24,6 @@ const DisplayItem = ({item, editItem}:DisplayItemProps) => {
     if (item.status === 'done') {
         itemText = <s data-testid="strikethrough">{item.text}</s>;
     }
-    // console.log(item, 'itemText:', itemText);
     return (
         <ListGroupItem>
             <Row>
