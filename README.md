@@ -1,3 +1,12 @@
+# how to deploy ?
+
+- `oc login` to a cluster  
+- create / enter a `project`
+- run `./deploy.sh` 
+- follow the screenshots to create persistent storage 
+    - (topology -> rightclick -> add storage -> create new claim -> mount path = `/items`)
+- visit the public URL from your browser :)
+    - (networking -> routes -> Name `todo` Location `url`)
 # how to run locally?
 
 (on bash shell execute  `start.sh`)
