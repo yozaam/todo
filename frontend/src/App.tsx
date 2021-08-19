@@ -10,12 +10,6 @@ import FilterType from './types/FilterType';
 
 import services from './services.js';
 
-// TODO: is this the right place to declare this constant?
-let BACKEND_URL:string = process.env.REACT_APP_BACKEND_URL || 'localhost:8000';
-// console.log(process.env, BACKEND_URL);
-BACKEND_URL = 'http://' + BACKEND_URL;
-//'http://todo-backend-yvakil-backend.apps.na46.prod.nextcle.com/'; // http://localhost:8000';
-
 function App() {
   const [items, setItems] = useState<ItemType[]>([]);
   
@@ -42,8 +36,8 @@ function App() {
       <FilterItems setFilter={setFilter}/> 
       <DataHelpers
           onClear={() => setItems([])}
-          onPost={() => services.postToEndpoint(BACKEND_URL, items)}
-          onGet={() => services.getFromEndpoint(BACKEND_URL, setItems)}
+          onPost={(BACKEND_URL) => services.postToEndpoint(BACKEND_URL, items)}
+          onGet={(BACKEND_URL) => services.getFromEndpoint(BACKEND_URL, setItems)}
       />    
     </>
   );

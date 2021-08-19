@@ -1,26 +1,18 @@
 let http = require('http');
 let fs = require('fs');
-// const fsExtra = require('fs-extra');
 
 const DB_PATH = __dirname + '/../items/db';
-let touch = fs.openSync(DB_PATH, 'a'); // just like doing a `touch ./public/items` in bash
+let touch = fs.openSync(DB_PATH, 'a'); // just like doing a `touch ./items/db` in bash
 fs.closeSync(touch);
 
 let server = http.createServer(function (req, res) {
 
-    // fsExtra.ensureFileSync(DB_PATH);
-
     console.log(req.method);
     if (req.method === 'GET') {
         res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
-        try {
-            let body = fs.readFileSync(DB_PATH, {encoding:'utf8', flag:'r'}); 
-            console.log(body);
-            res.end(body);
-        } catch(e) {
-            console.log('No data found');
-            res.end('');
-        }
+        let body = fs.readFileSync(DB_PATH, {encoding:'utf8', flag:'r'}); 
+        console.log(body);
+        res.end(body);
     } else if (req.method === 'POST') {
         let body = '';
         req.on('data', function (chunk) {

@@ -28,7 +28,7 @@ test('Add, remove, toggle new item in todolist', () => {
   expect(screen.queryByText("dummy")).not.toBeInTheDocument();
 });
 
-test('Filters todos correctly', () => {
+test('Counts and Filters todos correctly', () => {
   const inputElement = screen.getByPlaceholderText("Enter your todo");
   userEvent.type(inputElement, "first item");
   fireEvent.click(screen.getByText("Add"));
@@ -37,11 +37,16 @@ test('Filters todos correctly', () => {
   fireEvent.click(screen.getByText("Add"));
   fireEvent.click(screen.getByText("second item"));
 
+  expect(screen.queryByText("Count = 2")).toBeInTheDocument();
+
   fireEvent.click(screen.getByText("Done"));
   expect(screen.queryByText("first item")).not.toBeInTheDocument();
+  expect(screen.queryByText("Count = 1")).toBeInTheDocument();
 
   fireEvent.click(screen.getByText("Todo"));
   expect(screen.queryByText("second item")).not.toBeInTheDocument();
+  expect(screen.queryByText("Count = 1")).toBeInTheDocument();
+
 });
 
 test('Clear all button works', () => {

@@ -10,7 +10,7 @@ interface DisplayItemsProps {
     editItem: any;
 };
 
-const DisplayItems = ({filter, items, editItem}:DisplayItemsProps) => {
+const DisplayItems: React.FC<DisplayItemsProps> = ({filter, items, editItem}) => {
     const listItems = items
     .filter((item) => filter[item.status])
     .map((item) => {
