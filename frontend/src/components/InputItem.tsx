@@ -1,21 +1,24 @@
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 
-interface InputItemProps {
-    newItemText: string;
-    setNewItemText: any;
-    addItemToList: any;
-};
+const InputItem = ({ addItemToList }) => {
 
-const InputItem = ({newItemText, setNewItemText, addItemToList}:InputItemProps) => {
+    const [newItemText, setNewItemText] = useState<string>("");
+
+    const addItemToListAndClearInput = () => {
+        addItemToList(newItemText);
+        setNewItemText("");
+    };
+
     return (
         <>
             <input 
                 value={newItemText} 
                 onChange={e => setNewItemText(e.target.value)} 
-                onKeyDown={e => e.key === 'Enter' && addItemToList()} // if "enter"
+                onKeyDown={e => e.key === 'Enter' && addItemToListAndClearInput()} // if "enter"
                 type="text" placeholder="Enter your todo"
             />
-            <Button onClick={addItemToList}>Add</Button>
+            <Button onClick={addItemToListAndClearInput}>Add</Button>
         </>
     );
 }

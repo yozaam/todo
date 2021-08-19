@@ -1,43 +1,20 @@
-import Button from 'react-bootstrap/Button';
-
-import ItemType from '../types/ItemType';
+import { ButtonGroup, Button }  from 'react-bootstrap';
 
 interface DataHelpersProps {
-    items: ItemType[];
-    setItems: any;
+    onClear: any;
+    onGet: any;
+    onPost:any;
 };
 
-const DataHelpers = ({items, setItems}:DataHelpersProps) => {
-
-    let BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'localhost:8000';
-    // console.log(process.env, BACKEND_URL);
-    BACKEND_URL = 'http://' + BACKEND_URL;
-    //'http://todo-backend-yvakil-backend.apps.na46.prod.nextcle.com/'; // http://localhost:8000';
-
-    const postToEndpoint = () => {
-        const request = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(items)
-        };
-
-        fetch(BACKEND_URL, request)
-            .then(response => response.json())
-            .then(data => console.log(data));
-    };
-
-    const getFromEndpoint = () => {
-        fetch(BACKEND_URL)
-            .then(response => response.json())
-            .then(data => setItems(data));
-    };
-
+const DataHelpers: React.FC<DataHelpersProps> = ({onClear, onGet, onPost}) => {
     return (
-        <>
-            <Button onClick={()=>setItems([])}>Clear All</Button> 
-            <Button onClick={()=>postToEndpoint()}>Save to DB</Button> 
-            <Button onClick={()=>getFromEndpoint()}>Get from DB</Button>
-        </>
+        <div>
+            <ButtonGroup>
+                <Button onClick={onClear}>Clear All</Button> 
+                <Button onClick={onPost}>Save to DB</Button> 
+                <Button onClick={onGet}>Get from DB</Button>
+            </ButtonGroup>
+        </div>
     );
 };
 

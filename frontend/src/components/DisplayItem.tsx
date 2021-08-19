@@ -1,5 +1,5 @@
 import React from "react";
-import {ListGroupItem, Button, Row, Col} from "react-bootstrap";
+import { InputGroup, ListGroupItem, Button, Row, Col} from "react-bootstrap";
 import ItemType from "../types/ItemType";
 
 interface DisplayItemProps {
@@ -22,16 +22,18 @@ const DisplayItem = ({item, editItem}:DisplayItemProps) => {
 
     let itemText:any = item.text;
     if (item.status === 'done') {
-        itemText = <s>{item.text}</s>;
+        itemText = <s data-testid="strikethrough">{item.text}</s>;
     }
-    // console.log(item, 'itemText:', itemText);
     return (
         <ListGroupItem>
             <Row>
-                <Col md="8" onClick={toggleStatus}> 
+                <span style={{width:"fit-content"}} onClick={toggleStatus}>
+                    <InputGroup.Checkbox type="checkbox" checked={item.status === 'done'} />
+                </span>
+                <Col onClick={toggleStatus}> 
                     {itemText} 
                 </Col>
-                <Col md="4"> 
+                <Col > 
                     <Button onClick={deleteItem}> Delete </Button> 
                 </Col>
             </Row>
