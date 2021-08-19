@@ -8,7 +8,6 @@ COPY . .
 RUN yum install -y nodejs && npm install
 
 RUN mkdir items
-RUN chmod -R 777 items
 
 EXPOSE 8000
 
