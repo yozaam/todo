@@ -8,7 +8,7 @@ import DataHelpers from './components/DataHelpers';
 import ItemType from './types/ItemType';
 import FilterType from './types/FilterType';
 
-import services from './services.js';
+import services from './services';
 
 function App() {
   const [items, setItems] = useState<ItemType[]>([]);
@@ -36,8 +36,8 @@ function App() {
       <FilterItems setFilter={setFilter}/> 
       <DataHelpers
           onClear={() => setItems([])}
-          onPost={(BACKEND_URL) => services.postToEndpoint(BACKEND_URL, items)}
-          onGet={(BACKEND_URL) => services.getFromEndpoint(BACKEND_URL, setItems)}
+          onPost={() => services.postToEndpoint(items)}
+          onGet={() => services.getFromEndpoint(setItems)}
       />    
     </>
   );

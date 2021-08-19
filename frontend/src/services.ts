@@ -1,5 +1,9 @@
+import ItemType from "./types/ItemType";
+
+const BACKEND_URL:string = `http://${process.env.REACT_APP_BACKEND_URL || 'localhost:8000'}`;
+
 const services = {
-    postToEndpoint : (BACKEND_URL, items) => {
+    postToEndpoint : (items:ItemType[]) => {
         const request = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
@@ -11,7 +15,7 @@ const services = {
             .then(data => console.log(data));
     },
 
-    getFromEndpoint : (BACKEND_URL, setItems) => {
+    getFromEndpoint : (setItems) => {
         fetch(BACKEND_URL)
             .then(response => response.json())
             .then(data => setItems(data));
