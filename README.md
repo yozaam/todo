@@ -8,7 +8,8 @@
 - visit the public URL from your browser :)
     - (networking -> routes -> Name `todo` Location `url`)
 
-Screenshots for steps on storage & finding routes tab:
+Screenshots for steps on storage & finding routes tab:  
+
 ![Screenshot from 2021-08-19 12-20-27](https://user-images.githubusercontent.com/20089340/130025727-8a100779-b2a5-4aba-85b8-87cc41f1dbe3.png)
 
 ![Screenshot from 2021-08-19 12-20-39](https://user-images.githubusercontent.com/20089340/130025769-ba01993f-23e1-41d5-a6cc-fe9bebeaff90.png)
