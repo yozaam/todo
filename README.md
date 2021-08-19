@@ -3,7 +3,7 @@
 - `oc login` to a cluster  
 - create / enter a `project`
 - run `./deploy.sh` 
-- follow the screenshots to create persistent storage 
+- follow the screenshots to create persistent storage (optional)
     - (topology -> rightclick -> add storage -> create new claim -> mount path = `/items`)
 - visit the public URL from your browser :)
     - (networking -> routes -> Name `todo` Location `url`)

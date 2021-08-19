@@ -1,4 +1,4 @@
-oc new-app --docker-image=quay.io/yvakil/backend-todo -p VOLUME_CAPACITY=0.01Gi
+oc new-app --docker-image=quay.io/yvakil/backendtemp -p VOLUME_CAPACITY=0.01Gi --name=backend-todo
 
 oc expose svc/backend-todo
 
